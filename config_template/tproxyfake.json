@@ -87,7 +87,7 @@
             "type": "tproxy",
             "tag": "tproxy-in",
             "listen": "0.0.0.0",
-            "listen_port": 7893
+            "listen_port": 7895
         },
         {
             "tag": "mixed-in",
