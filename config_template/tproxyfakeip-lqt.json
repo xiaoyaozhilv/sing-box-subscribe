@@ -437,7 +437,7 @@
         "rules": [
             {
                 "inbound": [
-                    "tun-in",
+                    "tproxy-in",
                     "mixed-in"
                 ],
                 "action": "sniff"
