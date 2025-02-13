@@ -15,7 +15,7 @@
         "cache_file": {
             "enabled": true,
             "store_fakeip": true,
-            "store_rdrc": true
+            "store_rdrc": false
         }
     },
     "dns": {
@@ -436,10 +436,6 @@
         "final": "Proxy",
         "rules": [
             {
-                "inbound": [
-                    "tproxy-in",
-                    "mixed-in"
-                ],
                 "action": "sniff"
             },
             {
