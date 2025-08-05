@@ -394,7 +394,7 @@
     "final": "Proxy",
     "rules": [
       {
-        "inbound": ["tun-in", "mixed-in"],
+        "inbound": ["tproxy-in", "mixed-in"],
         "action": "sniff"
       },
       {
@@ -723,4 +723,5 @@
       }
     ]
   }
+
 }
