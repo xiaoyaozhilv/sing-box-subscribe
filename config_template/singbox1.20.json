@@ -35,7 +35,7 @@
       },
       {
         "tag": "fakeip",
-        "address": "fakeip"
+        "type": "fakeip"
       }
     ],
     "rules": [
@@ -804,4 +804,5 @@
     ]
   }
 }
+
 
