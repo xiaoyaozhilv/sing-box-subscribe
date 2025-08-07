@@ -24,26 +24,13 @@
       {
         "tag": "dns_direct",
         "type": "https",
-        "server": "https://dns.alidns.com/dns-query",
-        "detour": "🎯 全球直连"
-      },
-      {
-        "tag": "dns_default",
-        "type": "udp",
         "server": "223.5.5.5",
-        "detour": "🎯 全球直连"
-      },
-      {
-        "tag": "dns_public",
-        "type": "https",
-        "server": "https://dns.alidns.com/dns-query",
         "detour": "🎯 全球直连"
       },
       {
         "tag": "dns_proxy",
         "type": "tls",
         "server": "1.1.1.1",
-        "strategy": "ipv4_only",
         "detour": "🚀 节点选择"
       },
       {
@@ -54,7 +41,7 @@
     "rules": [
       {
         "outbound": "any",
-        "server": "dns_public"
+        "server": "dns_direct"
       },
       {
         "clash_mode": "Direct",
@@ -817,3 +804,4 @@
     ]
   }
 }
+
