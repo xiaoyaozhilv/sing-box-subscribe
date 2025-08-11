@@ -23,12 +23,12 @@
         "servers": [
             {
                 "tag": "dns_default",
-                "address": "udp://10.0.0.2",
+                "address": "udp://10.0.0.2:8888",
                 "detour": "🎯 全球直连"
             },
             {
                 "tag": "dns_proxy",
-                "address": "https://8.8.8.8/dns-query",
+                "address": "udp://10.0.0.2:7777",
                 "detour": "🎯 全球直连"
             },
             {
@@ -49,25 +49,6 @@
             {
                 "outbound": "any",
                 "server": "dns_proxy"
-            },
-            {
-                "clash_mode": "Direct",
-                "server": "dns_default"
-            },
-            {
-                "clash_mode": "Global",
-                "server": "dns_proxy"
-            },
-            {
-                "rule_set": "geosite-cn",
-                "server": "dns_default"
-            },
-            {
-                "query_type": [
-                    "A",
-                    "AAAA"
-                ],
-                "server": "fakeip"
             }
         ],
         "fakeip": {
@@ -530,14 +511,6 @@
                     }
                 ],
                 "action": "hijack-dns"
-            },
-            {
-                "clash_mode": "Direct",
-                "outbound": "🎯 全球直连"
-            },
-            {
-                "clash_mode": "Global",
-                "outbound": "GLOBAL"
             },
             {
                 "rule_set": "geosite-private",
