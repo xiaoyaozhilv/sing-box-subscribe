@@ -64,7 +64,7 @@
             "type": "direct",
             "tag": "in-dns",
             "listen": "0.0.0.0",             
-            "listen_port": 7874,              
+            "listen_port": 7874           
         },
         {
             "type": "tproxy",
