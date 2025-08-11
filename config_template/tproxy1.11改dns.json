@@ -22,14 +22,27 @@
     "dns": {
         "servers": [
             {
+                "tag": "dns_direct",
+                "address": "https://dns.alidns.com/dns-query",
+                "address_resolver": "dns_default",
+                "detour": "🎯 全球直连"
+            },
+            {
                 "tag": "dns_default",
-                "address": "udp://10.0.0.2:8888",
+                "address": "223.5.5.5",
+                "detour": "🎯 全球直连"
+            },
+            {
+                "tag": "dns_public",
+                "address": "https://dns.alidns.com/dns-query",
+                "address_resolver": "dns_default",
                 "detour": "🎯 全球直连"
             },
             {
                 "tag": "dns_proxy",
-                "address": "udp://10.0.0.2:7777",
-                "detour": "🎯 全球直连"
+                "address": "tls://1.1.1.1",
+                "strategy": "ipv4_only",
+                "detour": "🚀 节点选择"
             },
             {
                 "tag": "fakeip",
@@ -38,17 +51,27 @@
         ],
         "rules": [
             {
-                "inbound": "in-dns",            
-                "rewrite_ttl": 3,
-                "server": "fakeip"
-            },
-            {
-                "outbound": "🎯 全球直连",
-                "server": "dns_default"
-            },
-            {
                 "outbound": "any",
+                "server": "dns_public"
+            },
+            {
+                "clash_mode": "Direct",
+                "server": "dns_direct"
+            },
+            {
+                "clash_mode": "Global",
                 "server": "dns_proxy"
+            },
+            {
+                "rule_set": "geosite-cn",
+                "server": "dns_direct"
+            },
+            {
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
+                "server": "fakeip"
             }
         ],
         "fakeip": {
@@ -61,20 +84,14 @@
     },
     "inbounds": [
         {
-            "type": "direct",
-            "tag": "in-dns",
-            "listen": "0.0.0.0",             
-            "listen_port": 7874           
-        },
-        {
             "type": "tproxy",
             "tag": "tproxy-in",
             "listen": "0.0.0.0",
             "listen_port": 7895
         },
         {
-            "tag": "socks5",
-            "type": "socks",
+            "tag": "mixed-in",
+            "type": "mixed",
             "listen": "0.0.0.0",
             "listen_port": 7890
         }
@@ -238,6 +255,16 @@
             "tag": "🍏 Apple",
             "type": "selector",
             "outbounds": [
+                "🎯 全球直连",
+                "🇭🇰 香港节点",
+                "🇯🇵 日本节点",
+                "🇺🇲 美国节点"
+            ]
+        },
+        {
+                "tag": "🍏 hp",
+                "type": "selector",
+                "outbounds": [
                 "🎯 全球直连",
                 "🇭🇰 香港节点",
                 "🇯🇵 日本节点",
@@ -513,6 +540,14 @@
                 "action": "hijack-dns"
             },
             {
+                "clash_mode": "Direct",
+                "outbound": "🎯 全球直连"
+            },
+            {
+                "clash_mode": "Global",
+                "outbound": "GLOBAL"
+            },
+            {
                 "rule_set": "geosite-private",
                 "outbound": "🎯 全球直连"
             },
@@ -572,6 +607,10 @@
                 ],
                 "outbound": "🍏 Apple"
             },
+            {
+                "rule_set": "geosite-hp",
+                "outbound": "🍏 hp"
+            },          
             {
                 "rule_set": "geosite-onedrive",
                 "outbound": "🐬 OneDrive"
@@ -750,6 +789,14 @@
                 "type": "remote",
                 "format": "binary",
                 "url": "https://ghproxy.cc/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs",
+                "download_detour": "🎯 全球直连",
+                "update_interval": "7d"
+            },
+            {
+                "tag": "geosite-hp",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://ghproxy.cc/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/hp.srs",
                 "download_detour": "🎯 全球直连",
                 "update_interval": "7d"
             },
