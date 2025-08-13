@@ -116,14 +116,13 @@
       "tag": "tproxy-in",
       "listen": "0.0.0.0",
       "listen_port": 7895
-    }，
+    },
     {
       "tag": "socks-in",
       "type": "socks",
       "listen": "0.0.0.0",
       "listen_port": 7890
     }
-  ],
   ],
   "experimental": {
     "cache_file": {
@@ -147,3 +146,4 @@
   }
 
 }
+
