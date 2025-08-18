@@ -100,7 +100,7 @@
       "tag": "dns-in",
       "type": "direct",
       "listen": "::",
-      "listen_port": 7874
+      "listen_port": 53
     },
     {
       "tag": "socks-in",
@@ -136,4 +136,5 @@
     "timestamp": true
   }
 }
+
 
