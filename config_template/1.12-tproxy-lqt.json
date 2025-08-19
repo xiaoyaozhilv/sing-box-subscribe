@@ -2,7 +2,7 @@
  "dns": {
     "servers": [
       { "tag": "local", "type": "https", "server": "223.5.5.5" },
-      { "tag": "foreign", "type": "tls", "server": "8.8.8.8",  }
+      { "tag": "foreign", "type": "tls", "server": "8.8.8.8" }
     ],
    "rules": [
       {"clash_mode": "direct", "server": "local"},
@@ -127,3 +127,4 @@
     }
   }
 }
+
