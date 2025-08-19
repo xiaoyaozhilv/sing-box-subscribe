@@ -63,7 +63,7 @@
         "server": "fakeip"
       }
     ],
-    "final": "google"
+    "final": "google",
     "independent_cache": true,
     "strategy": "ipv4_only"
   },
