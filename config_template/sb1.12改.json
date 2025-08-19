@@ -14,7 +14,7 @@
     },
   "cache_file": {
     "enabled": true,
-    "path": "/etc/sing-box/cache.db"
+    "path": "/etc/sing-box/cache.db",
     "store_rdrc": true
     }
   },
@@ -699,3 +699,4 @@
     ]
   }
 }
+
