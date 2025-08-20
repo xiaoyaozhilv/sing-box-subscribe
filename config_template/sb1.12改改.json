@@ -382,7 +382,6 @@
     "final": "Proxy",
     "rules": [
       {
-        "inbound": ["tun-in", "mixed-in"],
         "action": "sniff"
       },
       {
@@ -398,6 +397,42 @@
         ],
         "action": "hijack-dns"
       },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 853
+          },
+          {
+            "network": "udp",
+            "port": 443
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "action": "reject"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "outbound": "direct"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geoip-cn"
+          },
+          {
+            "rule_set": "geosite-geolocation-!cn",
+            "invert": true
+          }
+        ],
+        "outbound": "direct"
+      }
+    ],
       {
         "rule_set": "geosite-category-ads-all",
         "clash_mode": "rule",
@@ -421,7 +456,8 @@
           "clash.razord.top",
           "yacd.metacubex.one",
           "yacd.haishan.me",
-          "d.metacubex.one"
+          "d.metacubex.one",
+          "hp.com"
         ],
         "outbound": "direct"
       },
@@ -712,6 +748,7 @@
     ]
   }
 }
+
 
 
 
