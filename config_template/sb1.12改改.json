@@ -431,8 +431,7 @@
           }
         ],
         "outbound": "direct"
-      }
-    ],
+      },
       {
         "rule_set": "geosite-category-ads-all",
         "clash_mode": "rule",
@@ -748,6 +747,7 @@
     ]
   }
 }
+
 
 
 
