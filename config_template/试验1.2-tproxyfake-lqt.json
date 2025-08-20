@@ -432,7 +432,7 @@
           "hpsmart.com",
           "hpprint.io",
           "printos.com",
-          "snapfish.com"
+          "snapfish.com",
           "hp.com"
         ],
         "outbound": "direct"
