@@ -24,7 +24,8 @@
       {
         "tag": "google",
         "type": "tls",
-        "server": "8.8.8.8"
+        "server": "8.8.8.8",
+        "detour": "Proxy"
       },
       {
         "tag": "local",
@@ -74,7 +75,6 @@
         "server": "fakeip"
       }
     ],
-    "final": "google",
     "independent_cache": true,
     "strategy": "ipv4_only"
   },
