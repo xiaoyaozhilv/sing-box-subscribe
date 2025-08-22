@@ -1,3 +1,4 @@
+
 {
   "log": {
     "level": "info",
@@ -25,7 +26,7 @@
         "tag": "google",
         "type": "tls",
         "server": "8.8.8.8",
-         "detour": "Proxy"       
+        "detour": "Proxy"
       },
       {
         "tag": "local",
@@ -72,7 +73,7 @@
       "tag": "tproxy-in",
       "listen": "0.0.0.0",
       "listen_port": 7895
-    }
+    }    
   ],
   "outbounds": [
     {
@@ -741,13 +742,3 @@
     ]
   }
 }
-
-
-
-
-
-
-
-
-
-
