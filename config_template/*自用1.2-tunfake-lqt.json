@@ -49,13 +49,13 @@
         "server": "google"
       },
       {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "rule_set": "geosite-cn",
-        "server": "fakeip"
-      },
+    "domain_suffix": [
+        "services.googleapis.cn",
+        "googleapis.cn",
+        "xn--ngstr-lra8j.com"
+      ],
+        "server": "google"
+      },   
       {
         "rule_set": "geosite-cn",
         "server": "local"
@@ -94,20 +94,7 @@
       "stack": "system",
       "auto_route": true,
       "auto_redirect": true,
-      "strict_route": true,
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "127.0.0.1",
-          "server_port": 7890
-        }
-      }
-    },
-    {
-      "tag": "mixed-in",
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 7890
+      "strict_route": true
     }
   ],
   "outbounds": [
@@ -452,6 +439,23 @@
         "outbound": "direct"
       },
       {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 853
+          },
+          {
+            "network": "udp",
+            "port": 443
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "action": "reject"
+      },
+      {
         "rule_set": "geosite-openai",
         "outbound": "OpenAI"
       },
@@ -734,6 +738,7 @@
     ]
   }
 }
+
 
 
 
