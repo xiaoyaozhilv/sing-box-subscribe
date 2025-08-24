@@ -1,4 +1,3 @@
-
 {
   "log": {
     "level": "info",
@@ -17,7 +16,7 @@
     "enabled": true,
     "path": "/etc/sing-box/cache.db",
     "store_fakeip": false,
-    "store_rdrc": false
+    "store_rdrc": true
     }
   },
   "dns": {
@@ -43,6 +42,14 @@
         "clash_mode": "global",
         "server": "google"
       },
+      {
+    "domain_suffix": [
+        "services.googleapis.cn",
+        "googleapis.cn",
+        "xn--ngstr-lra8j.com"
+      ],
+        "server": "google"
+      },   
       {
         "rule_set": "geosite-cn",
         "server": "local"
@@ -73,7 +80,7 @@
       "tag": "tproxy-in",
       "listen": "0.0.0.0",
       "listen_port": 7895
-    }    
+    }
   ],
   "outbounds": [
     {
@@ -385,45 +392,6 @@
         "action": "hijack-dns"
       },
       {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "port": 853
-          },
-          {
-            "network": "udp",
-            "port": 443
-          },
-          {
-            "protocol": "stun"
-          }
-        ],
-        "action": "reject"
-      },
-      {
-        "rule_set": "geosite-cn",
-        "outbound": "direct"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "geoip-cn"
-          },
-          {
-            "rule_set": "geosite-geolocation-!cn",
-            "invert": true
-          }
-        ],
-        "outbound": "direct"
-      },
-      {
         "rule_set": "geosite-category-ads-all",
         "clash_mode": "rule",
         "action": "reject"
@@ -447,17 +415,30 @@
           "yacd.metacubex.one",
           "yacd.haishan.me",
           "d.metacubex.one",
-          "hpeprint.com",
-          "hpphoto.com",
-          "hpconnected.com",
-          "hpconnected.net",
-          "hpsmart.com",
-          "hpprint.io",
-          "printos.com",
-          "snapfish.com",
-          "hp.com"
+          "blnew.com"
         ],
         "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 853
+          },
+          {
+            "network": "udp",
+            "port": 443
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "action": "reject"
       },
       {
         "rule_set": "geosite-openai",
