@@ -29,7 +29,7 @@
       },
       {
         "tag": "local",
-        "type": "udp",
+        "type": "https",
         "server": "223.5.5.5"
       },
       {
@@ -48,6 +48,14 @@
         "clash_mode": "global",
         "server": "google"
       },
+      {
+    "domain_suffix": [
+        "services.googleapis.cn",
+        "googleapis.cn",
+        "xn--ngstr-lra8j.com"
+      ],
+        "server": "google"
+      },   
       {
         "rule_set": "geosite-cn",
         "server": "local"
@@ -76,7 +84,7 @@
       }
     ],
     "independent_cache": true,
-    "strategy": "ipv4_only"
+    "strategy": "prefer_ipv4"
   },
   "inbounds": [
     {
@@ -84,7 +92,7 @@
       "tag": "tproxy-in",
       "listen": "0.0.0.0",
       "listen_port": 7895
-    }
+    }    
   ],
   "outbounds": [
     {
@@ -419,21 +427,30 @@
           "yacd.metacubex.one",
           "yacd.haishan.me",
           "d.metacubex.one",
-          "hpeprint.com",
-          "hpphoto.com",
-          "hpconnected.com",
-          "hpconnected.net",
-          "hpsmart.com",
-          "hpprint.io",
-          "printos.com",
-          "snapfish.com",
-          "hp.com"
+          "blnew.com"
         ],
         "outbound": "direct"
       },
       {
         "ip_is_private": true,
         "outbound": "direct"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 853
+          },
+          {
+            "network": "udp",
+            "port": 443
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "action": "reject"
       },
       {
         "rule_set": "geosite-openai",
@@ -718,5 +735,3 @@
     ]
   }
 }
-
-
