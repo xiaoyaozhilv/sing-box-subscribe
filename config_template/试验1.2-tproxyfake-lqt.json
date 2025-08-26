@@ -83,6 +83,7 @@
         "server": "fakeip"
       }
     ],
+    "final": "google",
     "independent_cache": true,
     "strategy": "prefer_ipv4"
   },
@@ -427,8 +428,7 @@
           "clash.razord.top",
           "yacd.metacubex.one",
           "yacd.haishan.me",
-          "d.metacubex.one",
-          "blnew.com"
+          "d.metacubex.one"
         ],
         "outbound": "direct"
       },
