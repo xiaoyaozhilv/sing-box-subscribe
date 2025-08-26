@@ -11,10 +11,9 @@
       "external_ui_download_url": "https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip",
       "external_ui_download_detour": "direct",
       "default_mode": "rule"
-    },
+    },    
   "cache_file": {
     "enabled": true,
-    "path": "/etc/sing-box/cache.db",
     "store_fakeip": true,
     "store_rdrc": true
     }
@@ -24,7 +23,8 @@
       {
         "tag": "google",
         "type": "tls",
-        "server": "8.8.8.8"
+        "server": "8.8.8.8",
+        "detour": "Proxy"
       },
       {
         "tag": "local",
@@ -52,26 +52,62 @@
           "A",
           "AAAA"
         ],
+        "rule_set": "geosite-cn",
+        "server": "fakeip"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "local"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-geolocation-!cn",
+            "invert": true
+          },
+          {
+            "rule_set": "geoip-cn"
+          }
+        ],
+        "server": "google",
+        "client_subnet": "114.114.114.114/24"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
         "server": "fakeip"
       }
     ],
-    "final": "google",
     "independent_cache": true,
-    "strategy": "ipv4_only"
+    "strategy": "prefer_ipv4"
   },
   "inbounds": [
     {
       "tag": "tun-in",
       "type": "tun",
-      "address": ["172.19.0.0/30"],
+      "address": [
+        "172.19.0.0/30",
+        "fdfe:dcba:9876::0/126"
+      ],
+      "stack": "system",
       "auto_route": true,
-      "auto_redirect": true,
-      "strict_route": true
+      "strict_route": true,
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 7890
+        }
+      }
     },
     {
       "tag": "mixed-in",
       "type": "mixed",
-      "listen": "0.0.0.0",
+      "listen": "127.0.0.1",
       "listen_port": 7890
     }
   ],
@@ -369,6 +405,7 @@
     "final": "Proxy",
     "rules": [
       {
+        "inbound": ["tun-in", "mixed-in"],
         "action": "sniff"
       },
       {
@@ -407,16 +444,7 @@
           "clash.razord.top",
           "yacd.metacubex.one",
           "yacd.haishan.me",
-          "d.metacubex.one",
-          "hpeprint.com",
-          "hpphoto.com",
-          "hpconnected.com",
-          "hpconnected.net",
-          "hpsmart.com",
-          "hpprint.io",
-          "printos.com",
-          "snapfish.com"
-          "hp.com"
+          "d.metacubex.one"
         ],
         "outbound": "direct"
       },
