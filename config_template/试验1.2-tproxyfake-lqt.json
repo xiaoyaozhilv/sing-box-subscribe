@@ -381,6 +381,7 @@
     }
   ],
   "route": {
+    "default_mark": 666,
     "default_domain_resolver": {
       "server": "local"
     },
