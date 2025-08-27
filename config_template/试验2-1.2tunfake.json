@@ -24,8 +24,7 @@
       {
         "tag": "google",
         "type": "tls",
-        "server": "8.8.8.8",
-        "detour": "Proxy"
+        "server": "8.8.8.8"
       },
       {
         "tag": "local",
@@ -47,14 +46,6 @@
       {
         "clash_mode": "global",
         "server": "google"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "rule_set": "geosite-cn",
-        "server": "fakeip"
       },
       {
         "rule_set": "geosite-cn",
@@ -83,6 +74,7 @@
         "server": "fakeip"
       }
     ],
+    "final": "google",
     "independent_cache": true,
     "strategy": "prefer_ipv4"
   },
@@ -729,6 +721,7 @@
     ]
   }
 }
+
 
 
 
