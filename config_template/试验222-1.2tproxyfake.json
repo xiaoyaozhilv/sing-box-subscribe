@@ -391,6 +391,7 @@
       "server": "local"
     },
     "auto_detect_interface": true,
+    "default_mark": 666,
     "final": "Proxy",
     "rules": [
       {
@@ -724,3 +725,4 @@
     ]
   }
 }
+
