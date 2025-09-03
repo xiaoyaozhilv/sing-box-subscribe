@@ -47,15 +47,7 @@
       {
         "clash_mode": "global",
         "server": "google"
-      },
-      {
-    "domain_suffix": [
-        "services.googleapis.cn",
-        "googleapis.cn",
-        "xn--ngstr-lra8j.com"
-      ],
-        "server": "google"
-      },   
+      }, 
       {
         "rule_set": "geosite-cn",
         "server": "local"
@@ -442,8 +434,7 @@
           "clash.razord.top",
           "yacd.metacubex.one",
           "yacd.haishan.me",
-          "d.metacubex.one",
-          "blnew.com"
+          "d.metacubex.one"
         ],
         "outbound": "direct"
       },
@@ -755,6 +746,7 @@
     ]
   }
 }
+
 
 
 
