@@ -403,6 +403,7 @@
     "final": "Proxy",
     "rules": [
       {
+        "inbound": ["tun-in", "mixed-in"],
         "action": "sniff"
       },
       {
@@ -754,6 +755,7 @@
     ]
   }
 }
+
 
 
 
