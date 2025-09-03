@@ -24,7 +24,8 @@
       {
         "tag": "google",
         "type": "tls",
-        "server": "8.8.8.8"
+        "server": "8.8.8.8",
+        "detour": "Proxy"
       },
       {
         "tag": "local",
@@ -52,6 +53,33 @@
           "A",
           "AAAA"
         ],
+        "rule_set": "geosite-cn",
+        "server": "fakeip"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "local"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-geolocation-!cn",
+            "invert": true
+          },
+          {
+            "rule_set": "geoip-cn"
+          }
+        ],
+        "server": "google",
+        "client_subnet": "114.114.114.114/24"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
         "server": "fakeip"
       }
     ],
@@ -64,7 +92,7 @@
       "tag": "tproxy-in",
       "listen": "0.0.0.0",
       "listen_port": 7895
-    },
+    },    
     {
       "tag": "mixed-in",
       "type": "mixed",
@@ -367,6 +395,7 @@
     "final": "Proxy",
     "rules": [
       {
+        "inbound": ["tproxy-in", "mixed-in"],
         "action": "sniff"
       },
       {
@@ -696,5 +725,3 @@
     ]
   }
 }
-
-
