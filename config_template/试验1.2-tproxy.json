@@ -16,7 +16,7 @@
     "enabled": true,
     "path": "/etc/sing-box/cache.db",
     "store_fakeip": false,
-    "store_rdrc": true
+    "store_rdrc": false
     }
   },
   "dns": {
@@ -42,14 +42,6 @@
         "clash_mode": "global",
         "server": "google"
       },
-      {
-    "domain_suffix": [
-        "services.googleapis.cn",
-        "googleapis.cn",
-        "xn--ngstr-lra8j.com"
-      ],
-        "server": "google"
-      },   
       {
         "rule_set": "geosite-cn",
         "server": "local"
@@ -373,7 +365,6 @@
       "server": "local"
     },
     "auto_detect_interface": true,
-    "default_mark": 666,
     "final": "Proxy",
     "rules": [
       {
@@ -391,6 +382,45 @@
           }
         ],
         "action": "hijack-dns"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 853
+          },
+          {
+            "network": "udp",
+            "port": 443
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "action": "reject"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "outbound": "direct"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geoip-cn"
+          },
+          {
+            "rule_set": "geosite-geolocation-!cn",
+            "invert": true
+          }
+        ],
+        "outbound": "direct"
       },
       {
         "rule_set": "geosite-category-ads-all",
@@ -416,30 +446,17 @@
           "yacd.metacubex.one",
           "yacd.haishan.me",
           "d.metacubex.one",
-          "blnew.com"
+          "hpeprint.com",
+          "hpphoto.com",
+          "hpconnected.com",
+          "hpconnected.net",
+          "hpsmart.com",
+          "hpprint.io",
+          "printos.com",
+          "snapfish.com",
+          "hp.com"
         ],
         "outbound": "direct"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "port": 853
-          },
-          {
-            "network": "udp",
-            "port": 443
-          },
-          {
-            "protocol": "stun"
-          }
-        ],
-        "action": "reject"
       },
       {
         "rule_set": "geosite-openai",
@@ -724,4 +741,11 @@
     ]
   }
 }
+
+
+
+
+
+
+
 
