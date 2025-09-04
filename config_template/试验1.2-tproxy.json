@@ -365,6 +365,7 @@
       "server": "local"
     },
     "auto_detect_interface": true,
+    "default_mark": 666,
     "final": "Proxy",
     "rules": [
       {
@@ -405,24 +406,6 @@
         "action": "reject"
       },
       {
-        "rule_set": "geosite-cn",
-        "outbound": "direct"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "geoip-cn"
-          },
-          {
-            "rule_set": "geosite-geolocation-!cn",
-            "invert": true
-          }
-        ],
-        "outbound": "direct"
-      },
-      {
         "rule_set": "geosite-category-ads-all",
         "clash_mode": "rule",
         "action": "reject"
@@ -445,16 +428,7 @@
           "clash.razord.top",
           "yacd.metacubex.one",
           "yacd.haishan.me",
-          "d.metacubex.one",
-          "hpeprint.com",
-          "hpphoto.com",
-          "hpconnected.com",
-          "hpconnected.net",
-          "hpsmart.com",
-          "hpprint.io",
-          "printos.com",
-          "snapfish.com",
-          "hp.com"
+          "d.metacubex.one"
         ],
         "outbound": "direct"
       },
@@ -741,6 +715,7 @@
     ]
   }
 }
+
 
 
 
