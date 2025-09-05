@@ -447,16 +447,7 @@
           "clash.razord.top",
           "yacd.metacubex.one",
           "yacd.haishan.me",
-          "d.metacubex.one",
-          "hpeprint.com",
-          "hpphoto.com",
-          "hpconnected.com",
-          "hpconnected.net",
-          "hpsmart.com",
-          "hpprint.io",
-          "printos.com",
-          "snapfish.com",
-          "hp.com"
+          "d.metacubex.one"
         ],
         "outbound": "direct"
       },
@@ -743,6 +734,7 @@
     ]
   }
 }
+
 
 
 
