@@ -423,6 +423,12 @@
       },
       {
         "domain": [
+          "blnew.com"
+        ],
+        "outbound": "Proxy"
+      },
+      {
+        "domain": [
           "clash.razord.top",
           "yacd.metacubex.one",
           "yacd.haishan.me",
@@ -717,4 +723,5 @@
     ]
   }
 }
+
 
